@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
+import SayHi from './sayHi.jsx'
 
 class App extends Component {
   constructor () {
@@ -71,6 +72,7 @@ class App extends Component {
             {drink.source && <Button basic size='tiny' color='teal' href={drink.source}>Source</Button>}
           </Container>
         }
+        <SayHi />
       </Container>
       : <Container text>
         <Dimmer active inverted>
