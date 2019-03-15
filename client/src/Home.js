@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
-import SayHi from './sayHi.jsx'
 
 class Home extends Component {
   constructor () {
@@ -41,6 +40,7 @@ class Home extends Component {
     let {drinks, drink} = this.state
     return drinks
       ? <Container text>
+        <div className='howdy'>Yo</div>
         <Header as='h2' icon textAlign='center' color='teal'>
           <Icon name='unordered list' circular />
           <Header.Content>
@@ -72,7 +72,6 @@ class Home extends Component {
             {drink.source && <Button basic size='tiny' color='teal' href={drink.source}>Source</Button>}
           </Container>
         }
-        <SayHi />
       </Container>
       : <Container text>
         <Dimmer active inverted>
