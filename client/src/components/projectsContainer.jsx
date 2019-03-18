@@ -14,7 +14,7 @@ class ProjectContainer extends React.Component {
 
   addNewDrink(title){
     let body = JSON.stringify({drink: {title}})
-    fetch('http://localhost:3001/api/v1/drinks', {
+    fetch('https://gentle-earth-22725.herokuapp.com/api/v1/drinks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
