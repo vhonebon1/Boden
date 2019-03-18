@@ -9,11 +9,11 @@ class ProjectsContainer extends React.Component {
     this.state = {
       drinks: this.props.data
     }
+    this.deleteProject = this.deleteProject.bind(this)
   }
 
   addNewDrink = (title) => {
     let body = JSON.stringify({drink: {title}})
-    let that = this
     fetch('https://gentle-earth-22725.herokuapp.com/api/v1/drinks', {
       method: 'POST',
       headers: {
