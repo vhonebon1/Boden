@@ -11,12 +11,28 @@ class ProjectsContainer extends React.Component {
     }
   }
 
+  addNewDrink = (title) => {
+    let body = JSON.stringify({drink: {title}})
+    let that = this
+    fetch('https://gentle-earth-22725.herokuapp.com/api/v1/drinks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: body,
+    }).then((response) => this.setState({drinks: {...this.state.drinks, ...response.data}}))
+  }
+
+
+
   render() {
     return(
       <React.Fragment>
-        <ProjectsList
-          projects={this.state.drinks}
-        />
+        { this.state.drinks &&
+          <ProjectsList
+            projects={this.state.drinks}
+          />
+        }
         <NewForm
           onNewDrink={this.addNewDrink}
         />

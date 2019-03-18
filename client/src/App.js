@@ -27,7 +27,8 @@ class App extends Component {
   }
 
   getDrinks () {
-    this.fetch('/api/v1/drinks')
+    console.log(this.state)
+    this.fetch('https://gentle-earth-22725.herokuapp.com/api/v1/drinks')
       .then(drinks => {
         if (drinks.length) {
           this.setState({drinks: drinks, hasData: true})
