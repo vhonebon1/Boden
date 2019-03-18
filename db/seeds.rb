@@ -12,23 +12,10 @@ breakfast_smoothie = project.create(
   steps: "Put all the ingredients in a blender and whizz for 1 min until smooth. Pour the mixture into two glasses to serve.",
   source: "https://www.bbcgoodfood.com/recipes/two-minute-breakfast-smoothie"
 )
-breakfast_smoothie.ingredients.create(description: "1 banana")
-breakfast_smoothie.ingredients.create(description: "1 tbsp porridge oats")
-breakfast_smoothie.ingredients.create(description: "80g soft fruit (like mango or strawberries)")
-breakfast_smoothie.ingredients.create(description: "150ml milk")
-breakfast_smoothie.ingredients.create(description: "1 tsp honey")
-breakfast_smoothie.ingredients.create(description: "1 tsp vanilla extract")
 
-kale_smoothie = project.create(
+kale_smoothie = Project.create(
   title: "Kale And Hearty Smoothie",
   description: "Give yourself a dose of vitamin C in the morning with this vegan green smoothie. Along with kale and avocado, there's a hit of zesty lime and pineapple.",
   steps: "Put all of the ingredients into a bullet or smoothie maker, add a large splash of water and blitz. Add more water until you have the desired consistency.",
   source: "https://www.bbcgoodfood.com/recipes/kale-smoothie",
 )
-kale_smoothie.ingredients.create(description: "2 handfuls kale")
-kale_smoothie.ingredients.create(description: "½ avocado")
-kale_smoothie.ingredients.create(description: "½ lime, juice only")
-kale_smoothie.ingredients.create(description: "large handful frozen pineapple chunks")
-kale_smoothie.ingredients.create(description: "medium-sized chunk ginger")
-kale_smoothie.ingredients.create(description: "1 tbsp cashew nuts")
-kale_smoothie.ingredients.create(description: "1 banana, optional")
