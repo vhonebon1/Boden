@@ -1,15 +1,42 @@
 import React from 'react'
 import NewForm from './newProjectForm'
-import axios from 'axios'
+import ProjectsList from './ProjectsList'
 
 class ProjectContainer extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      drinks: this.props.drinks
-    }
-    this.addNewDrink = this.addNewDrink.bind(this)
+  constructor () {
+    super()
+    this.state = {}
+    this.getDrinks = this.getDrinks.bind(this)
+    this.getDrink = this.getDrink.bind(this)
+  }
+
+  componentDidMount () {
+    this.getDrinks()
+  }
+
+  fetch (endpoint) {
+    return window.fetch(endpoint)
+      .then(response => response.json())
+      .catch(error => console.log(error))
+  }
+
+  getDrinks () {
+    this.fetch('https://gentle-earth-22725.herokuapp.com/api/v1/drinks')
+      .then(drinks => {
+        if (drinks.length) {
+          console.log('hi')
+          this.setState({drinks: drinks})
+          this.getDrink(drinks[0].id)
+        } else {
+          this.setState({drinks: []})
+        }
+      })
+  }
+
+  getDrink (id) {
+    this.fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/drinks/${id}`)
+      .then(drink => this.setState({drink: drink}))
   }
 
   addNewDrink(title){
@@ -24,10 +51,18 @@ class ProjectContainer extends React.Component {
   }
 
   render() {
+    console.log(this.state.drinks)
     return(
-      <NewForm
-        onNewDrink={this.addNewDrink}
-      />
+      <React.Fragment>
+        { this.state.drinks &&
+          <ProjectsList
+            projects={this.state.drinks}
+          />
+        }
+        <NewForm
+          onNewDrink={this.addNewDrink}
+        />
+      </React.Fragment>
     )
   }
 }
