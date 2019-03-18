@@ -6,14 +6,59 @@ import NotFound from './NotFound'
 import './manifest.scss'
 
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      drinks: [],
+      hasData: false
+    }
+    this.getDrinks = this.getDrinks.bind(this)
+  }
+
+  componentDidMount () {
+    this.getDrinks()
+  }
+
+  fetch (endpoint) {
+    return window.fetch(endpoint)
+      .then(response => response.json())
+      .catch(error => console.log(error))
+  }
+
+  getDrinks () {
+    this.fetch('/api/v1/drinks')
+      .then(drinks => {
+        if (drinks.length) {
+          this.setState({drinks: drinks, hasData: true})
+        } else {
+          this.setState({drinks: []})
+        }
+      })
+  }
+
+  renderPage() {
+    return (
+      <Router>
+        <Switch>
+          <Route path='/' exact render={(props) => (
+            <Home {...props} data={this.state.drinks} />
+          )} />
+          <Route path='/tommy-admin' exact render={(props) => (
+            <ProjectsContainer {...props} data={this.state.drinks} />
+          )} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    )
+  }
+
   render () {
-    return <Router>
-      <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path='/tommy-admin' exact component={ProjectsContainer} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    return(
+      <div>
+        { this.state.hasData ? this.renderPage() : '' }
+      </div>
+    )
   }
 }
 
