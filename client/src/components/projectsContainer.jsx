@@ -20,10 +20,17 @@ class ProjectsContainer extends React.Component {
         'Content-Type': 'application/json'
       },
       body: body,
-    }).then((response) => this.setState({drinks: {...this.state.drinks, ...response.data}}))
+    }).then((response) => this.setState({drinks: response}))
   }
 
-
+  deleteProject(id) {
+    fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/drinks/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then((response) => console.log(response))
+  }
 
   render() {
     return(
@@ -31,6 +38,7 @@ class ProjectsContainer extends React.Component {
         { this.state.drinks &&
           <ProjectsList
             projects={this.state.drinks}
+            deleteProject={this.deleteProject}
           />
         }
         <NewForm

@@ -27,15 +27,20 @@ class App extends Component {
   }
 
   getDrinks () {
-    console.log(this.state)
     this.fetch('https://gentle-earth-22725.herokuapp.com/api/v1/drinks')
       .then(drinks => {
         if (drinks.length) {
           this.setState({drinks: drinks, hasData: true})
+          this.getDrink(drinks[0].id)
         } else {
           this.setState({drinks: []})
         }
       })
+  }
+
+  getDrink(id) {
+    this.fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/drinks/${id}`)
+      .then(drink => this.setState({drink: drink}))
   }
 
   renderPage() {

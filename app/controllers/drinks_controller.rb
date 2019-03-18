@@ -15,6 +15,12 @@ class DrinksController < ApiController
 
   def create
     @drink = Drink.new(drink_params)
+    render json: @drinks
+  end
+
+  def destroy
+    binding.pry
+    @drink = Drink.destroy(params[:id])
     render json: @drink
   end
 
@@ -25,6 +31,6 @@ class DrinksController < ApiController
   end
 
   def drink_params
-    params.require(:drink)
+    params.require(:drink).permit(:title)
   end
 end

@@ -14,10 +14,16 @@ module Api::V1
       render json: @drink.to_json(:include => { :ingredients => { :only => [:id, :description] }})
     end
 
+    # DELETE /drinks/:id
+    def destroy
+      @drink = Drink.destroy(params[:id])
+      render json: @drinks
+    end
+
     def create
       @drink = Drink.new(drink_params)
       if @drink.save
-        render json: @drink
+        render json: @drinks
       else
         render "new"
       end
