@@ -10,14 +10,14 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      drinks: [],
+      projects: [],
       hasData: false
     }
-    this.getDrinks = this.getDrinks.bind(this)
+    this.getProjects = this.getProjects.bind(this)
   }
 
   componentDidMount () {
-    this.getDrinks()
+    this.getProjects()
   }
 
   fetch (endpoint) {
@@ -26,21 +26,21 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
-  getDrinks () {
-    this.fetch('https://gentle-earth-22725.herokuapp.com/api/v1/drinks')
-      .then(drinks => {
-        if (drinks.length) {
-          this.setState({drinks: drinks, hasData: true})
-          this.getDrink(drinks[0].id)
+  getProjects () {
+    this.fetch('https://gentle-earth-22725.herokuapp.com/api/v1/projects')
+      .then(projects => {
+        if (projects.length) {
+          this.setState({projects: projects, hasData: true})
+          this.getProject(projects[0].id)
         } else {
-          this.setState({drinks: []})
+          this.setState({projects: []})
         }
       })
   }
 
-  getDrink(id) {
-    this.fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/drinks/${id}`)
-      .then(drink => this.setState({drink: drink}))
+  getProject(id) {
+    this.fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/projects/${id}`)
+      .then(project => this.setState({project: project}))
   }
 
   renderPage() {
@@ -48,10 +48,10 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path='/' exact render={(props) => (
-            <Home {...props} data={this.state.drinks} />
+            <Home {...props} data={this.state.projects} />
           )} />
           <Route path='/tommy-admin' exact render={(props) => (
-            <ProjectsContainer {...props} data={this.state.drinks} />
+            <ProjectsContainer {...props} data={this.state.projects} />
           )} />
           <Route component={NotFound} />
         </Switch>

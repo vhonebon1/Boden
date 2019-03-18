@@ -6,15 +6,15 @@ class Home extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      drinks: this.props.data
+      projects: this.props.data
     }
   }
 
   render () {
-    const { drinks } = this.state
+    const { projects } = this.state
     return(
       <div>
-        { drinks && drinks.map((drink) => <div>{drink.title}</div>)}
+        { projects && projects.map((project) => <div>{project.title}</div>)}
       </div>
     )
   }

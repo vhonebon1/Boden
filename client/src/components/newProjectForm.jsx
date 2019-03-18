@@ -1,10 +1,10 @@
 import React from 'react'
 
-const NewProjectForm = ({onNewDrink = f => f}) => {
+const NewProjectForm = ({onNewproject = f => f}) => {
   let title, description
   const submit = e => {
     e.preventDefault()
-    onNewDrink(title.value, description.value)
+    onNewproject(title.value, description.value)
     title.value = ''
     description.value =''
     title.focus()

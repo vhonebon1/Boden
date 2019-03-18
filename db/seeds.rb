@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
-breakfast_smoothie = Drink.create(
+breakfast_smoothie = project.create(
   title: "Two-Minute Breakfast Boost",
   description: "Whizz up a low-fat breakfast smoothie in no time. Use banana with other soft fruit, plus honey for a little sweetness and oats for slow-release fuel.",
   steps: "Put all the ingredients in a blender and whizz for 1 min until smooth. Pour the mixture into two glasses to serve.",
@@ -19,7 +19,7 @@ breakfast_smoothie.ingredients.create(description: "150ml milk")
 breakfast_smoothie.ingredients.create(description: "1 tsp honey")
 breakfast_smoothie.ingredients.create(description: "1 tsp vanilla extract")
 
-kale_smoothie = Drink.create(
+kale_smoothie = project.create(
   title: "Kale And Hearty Smoothie",
   description: "Give yourself a dose of vitamin C in the morning with this vegan green smoothie. Along with kale and avocado, there's a hit of zesty lime and pineapple.",
   steps: "Put all of the ingredients into a bullet or smoothie maker, add a large splash of water and blitz. Add more water until you have the desired consistency.",

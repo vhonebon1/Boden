@@ -1,6 +1,6 @@
-class CreateDrinks < ActiveRecord::Migration[5.1]
+class Createprojects < ActiveRecord::Migration[5.1]
   def change
-    create_table :drinks do |t|
+    create_table :projects do |t|
       t.string :title
       t.string :description
       t.string :steps

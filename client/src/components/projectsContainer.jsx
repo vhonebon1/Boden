@@ -7,24 +7,24 @@ class ProjectsContainer extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      drinks: this.props.data
+      projects: this.props.data
     }
     this.deleteProject = this.deleteProject.bind(this)
   }
 
-  addNewDrink = (title) => {
-    let body = JSON.stringify({drink: {title}})
-    fetch('https://gentle-earth-22725.herokuapp.com/api/v1/drinks', {
+  addNewProject = (title) => {
+    let body = JSON.stringify({project: {title}})
+    fetch('https://gentle-earth-22725.herokuapp.com/api/v1/projects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: body,
-    }).then((response) => this.setState({drinks: response}))
+    }).then((response) => this.setState({projects: response}))
   }
 
   deleteProject(id) {
-    fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/drinks/${id}`, {
+    fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/projects/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -35,14 +35,14 @@ class ProjectsContainer extends React.Component {
   render() {
     return(
       <React.Fragment>
-        { this.state.drinks &&
+        { this.state.projects &&
           <ProjectsList
-            projects={this.state.drinks}
+            projects={this.state.projects}
             deleteProject={this.deleteProject}
           />
         }
         <NewForm
-          onNewDrink={this.addNewDrink}
+          onNewproject={this.addNewproject}
         />
       </React.Fragment>
     )
