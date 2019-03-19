@@ -16,7 +16,6 @@ class ProjectsContainer extends React.Component {
 
   addNewProject = (title, description, url) => {
     let body = JSON.stringify({project: {title, description, url}})
-    console.log(body)
     fetch('https://gentle-earth-22725.herokuapp.com/api/v1/projects', {
       method: 'POST',
       headers: {
@@ -35,6 +34,17 @@ class ProjectsContainer extends React.Component {
     }).then((response) => console.log(response))
   }
 
+  editProject(id, title, description, url) {
+    let body = JSON.stringify({project: {id, title, description, url}})
+    fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/projects/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: body,
+    }).then((response) => console.log(response))
+  }
+
   toggleShowNewForm = () => {
     this.setState({showNewForm: !this.state.showNewForm})
   }
@@ -48,6 +58,7 @@ class ProjectsContainer extends React.Component {
           <ProjectsList
             projects={projects}
             deleteProject={this.deleteProject}
+            editProject={this.editProject}
           />
         }
         { showNewForm ?

@@ -14,6 +14,12 @@ module Api::V1
       render json: @project.to_json(:include => { :ingredients => { :only => [:id, :description] }})
     end
 
+    def update
+      @project = Project.find(params[:id])
+      @project.update_attributes(project_params)
+      render json: @project
+    end
+
     # DELETE /projects/:id
     def destroy
       @project = Project.destroy(params[:id])
