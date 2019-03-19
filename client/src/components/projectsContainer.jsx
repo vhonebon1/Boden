@@ -27,7 +27,7 @@ class ProjectsContainer extends React.Component {
   }
 
   deleteProject(id) {
-    fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/projects${id}`, {
+    fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/projects/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
