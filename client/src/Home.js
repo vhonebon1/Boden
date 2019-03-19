@@ -15,7 +15,11 @@ class Home extends React.Component {
     return(
       <div>
         <Header />
-        { projects && projects.map((project) => <div>{project.title}</div>)}
+        <div className='home-project-images'>
+          { projects && projects.map((project) =>
+            <img className="admin-image" alt="" src={`http://img.youtube.com/vi/${project.url}/0.jpg`} />
+          )}
+        </div>
       </div>
     )
   }

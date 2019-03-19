@@ -31,7 +31,6 @@ class App extends Component {
       .then(projects => {
         if (projects.length) {
           this.setState({projects: projects, hasData: true})
-          this.getProject(projects[0].id)
         } else {
           this.setState({projects: []})
         }
@@ -61,7 +60,7 @@ class App extends Component {
 
   render () {
     return(
-      <div>
+      <div className='app-wrapper'>
         { this.state.hasData ? this.renderPage() : '' }
       </div>
     )

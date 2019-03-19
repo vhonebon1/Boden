@@ -3,7 +3,7 @@ class ProjectsController < ApiController
 
   # GET /projects
   def index
-    @projects = Project.select("id, title").all
+    @projects = Project.all
     render json: @projects.to_json
   end
 
@@ -15,7 +15,7 @@ class ProjectsController < ApiController
 
   def create
     @project = project.new(project_params)
-    render json: @projects
+    render json: @project
   end
 
   def destroy

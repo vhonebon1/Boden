@@ -1,1 +1,8 @@
-
+.app-wrapper {
+  padding: 50px;
+  .home-project-images {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: space-between;
+  }
+}

@@ -11,10 +11,12 @@ class ProjectsContainer extends React.Component {
       showNewForm: false
     }
     this.deleteProject = this.deleteProject.bind(this)
+    this.addNewProject = this.addNewProject.bind(this)
   }
 
-  addNewProject = (title) => {
-    let body = JSON.stringify({project: {title}})
+  addNewProject = (title, description, url) => {
+    let body = JSON.stringify({project: {title, description, url}})
+    console.log(body)
     fetch('https://gentle-earth-22725.herokuapp.com/api/v1/projects', {
       method: 'POST',
       headers: {
@@ -25,7 +27,7 @@ class ProjectsContainer extends React.Component {
   }
 
   deleteProject(id) {
-    fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/projects/${id}`, {
+    fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/projects${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -41,6 +43,7 @@ class ProjectsContainer extends React.Component {
     const { projects, showNewForm } = this.state
     return(
       <React.Fragment>
+        <h1>Admin</h1>
         { projects &&
           <ProjectsList
             projects={projects}
@@ -49,7 +52,7 @@ class ProjectsContainer extends React.Component {
         }
         { showNewForm ?
           <NewForm
-            onNewproject={this.addNewproject}
+            onNewProject={this.addNewProject}
           /> :
           <button onClick={this.toggleShowNewForm}>Add a new project</button>
         }

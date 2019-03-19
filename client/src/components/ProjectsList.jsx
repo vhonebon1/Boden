@@ -2,7 +2,7 @@ import React from 'react'
 import Project from './Project'
 
 const ProjectsList = ({ projects, deleteProject }) =>
-  <React.Fragment>
+  <div className='projects-list-wrapper'>
     { projects.map(project => {
       return (
         <Project
@@ -12,6 +12,6 @@ const ProjectsList = ({ projects, deleteProject }) =>
         />
       )
     })}
-  </React.Fragment>
+  </div>
 
 export default ProjectsList

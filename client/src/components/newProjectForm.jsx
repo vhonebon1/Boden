@@ -1,10 +1,10 @@
 import React from 'react'
 
-const NewProjectForm = ({onNewproject = f => f}) => {
+const NewProjectForm = ({onNewProject = f => f}) => {
   let title, description, url
   const submit = e => {
     e.preventDefault()
-    onNewproject(title.value, description.value, url.value)
+    onNewProject(title.value, description.value, url.value)
     title.value = ''
     description.value =''
     url.value = ''

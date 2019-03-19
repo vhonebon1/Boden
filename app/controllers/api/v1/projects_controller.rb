@@ -4,7 +4,7 @@ module Api::V1
 
     # GET /projects
     def index
-      @projects = Project.select("id, title").all
+      @projects = Project.all
       render json: @projects.to_json
     end
 
@@ -23,7 +23,7 @@ module Api::V1
     def create
       @project = Project.new(project_params)
       if @project.save
-        render json: @projects
+        render json: @project
       else
         render "new"
       end
@@ -36,7 +36,7 @@ module Api::V1
     end
 
     def project_params
-      params.require(:project).permit(:title)
+      params.require(:project).permit(:title, :description, :url)
     end
   end
 end
