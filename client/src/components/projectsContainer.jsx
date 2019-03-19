@@ -7,7 +7,8 @@ class ProjectsContainer extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      projects: this.props.data
+      projects: this.props.data,
+      showNewForm: false
     }
     this.deleteProject = this.deleteProject.bind(this)
   }
@@ -32,18 +33,26 @@ class ProjectsContainer extends React.Component {
     }).then((response) => console.log(response))
   }
 
+  toggleShowNewForm = () => {
+    this.setState({showNewForm: !this.state.showNewForm})
+  }
+
   render() {
+    const { projects, showNewForm } = this.state
     return(
       <React.Fragment>
-        { this.state.projects &&
+        { projects &&
           <ProjectsList
-            projects={this.state.projects}
+            projects={projects}
             deleteProject={this.deleteProject}
           />
         }
-        <NewForm
-          onNewproject={this.addNewproject}
-        />
+        { showNewForm ?
+          <NewForm
+            onNewproject={this.addNewproject}
+          /> :
+          <button onClick={this.toggleShowNewForm}>Add a new project</button>
+        }
       </React.Fragment>
     )
   }

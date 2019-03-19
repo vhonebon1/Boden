@@ -1,10 +1,10 @@
 import React from 'react'
 
 const Project = ({ project, key, deleteProject }) =>
-  <div className='project-wrapper'>
-    <div>{project.id}</div>
+  <div className="project-wrapper">
     <div>{project.title}</div>
-    <button onClick={() => deleteProject(project.id)}>Delete</button>
+    <div>{project.description}</div>
+    <div>{project.url}</div>
   </div>
 
 export default Project

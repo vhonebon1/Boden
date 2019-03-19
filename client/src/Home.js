@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
 import ProjectsContainer from './components/projectsContainer.jsx'
+import Header from './components/header'
 
 class Home extends React.Component {
   constructor (props) {
@@ -14,6 +14,7 @@ class Home extends React.Component {
     const { projects } = this.state
     return(
       <div>
+        <Header />
         { projects && projects.map((project) => <div>{project.title}</div>)}
       </div>
     )

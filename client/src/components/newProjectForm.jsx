@@ -1,12 +1,13 @@
 import React from 'react'
 
 const NewProjectForm = ({onNewproject = f => f}) => {
-  let title, description
+  let title, description, url
   const submit = e => {
     e.preventDefault()
-    onNewproject(title.value, description.value)
+    onNewproject(title.value, description.value, url.value)
     title.value = ''
     description.value =''
+    url.value = ''
     title.focus()
   }
 
@@ -24,6 +25,12 @@ const NewProjectForm = ({onNewproject = f => f}) => {
           ref={input => description = input}
           type="text"
           placeholder="Description..."
+          required
+        />
+        <input
+          ref={input => url = input}
+          type="text"
+          placeholder="Url..."
           required
         />
       <button className="action-button">Add new project</button>
