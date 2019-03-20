@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './components/header'
+import Footer from './components/footer'
 import HomeBlock from './components/homeBlock'
 import Modal from './components/modal'
 import VideoPlayer from './components/videoPlayer'
@@ -22,15 +23,13 @@ class Home extends React.Component {
     const { projects } = this.state
     const selectedProject = projects.filter((project) => project.id === id)[0]
     this.setState({selectedProject: selectedProject })
-    console.log(selectedProject)
   }
 
   clearSelectedProject = () => {
     this.setState({selectedProject: false})
-    console.log('cleared')
   }
 
-  renderAllVideos = () => {
+  renderHomePage = () => {
     const { projects } = this.state
     return (
       <React.Fragment>
@@ -40,6 +39,8 @@ class Home extends React.Component {
             <HomeBlock project={project} onClick={() => this.toggleSelectedProject(project.id)}/>
           )}
         </div>
+        { this.state.selectedProject && this.renderSelectedVideo()}
+        <Footer />
       </React.Fragment>
     )
   }
@@ -47,7 +48,7 @@ class Home extends React.Component {
   renderSelectedVideo = () => {
     return (
       <Modal
-        hideModal={this.toggleSelectedProject}
+        hideModal={this.clearSelectedProject}
         children
       >
         <VideoPlayer
@@ -55,16 +56,15 @@ class Home extends React.Component {
           onEnded={this.toggleSelectedProject}
         />
       </Modal>
-
     )
   }
 
   render () {
     const { selectedProject } = this.state
     return(
-      <div>
-        { selectedProject ? this.renderSelectedVideo() : this.renderAllVideos() }
-      </div>
+      <React.Fragment>
+        { this.renderHomePage() }
+      </React.Fragment>
     )
   }
 }

@@ -1,9 +1,15 @@
 import React from 'react'
+import IosClose from 'react-ionicons/lib/IosClose'
 
 const Modal = ({ hideModal, children }) =>
-  <div className='modal-wrapper'>
-    <div className="modal-escape" onClick={hideModal}>X</div>
-    {children}
-  </div>
+  <React.Fragment>
+    <div className='overlay'></div>
+    <div className='close-wrap' onClick={() => hideModal()}>
+      <IosClose />
+    </div>
+    <div className="modal-content">
+      {children}
+    </div>
+  </React.Fragment>
 
 export default Modal
