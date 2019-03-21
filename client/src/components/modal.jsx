@@ -4,11 +4,11 @@ import IosClose from 'react-ionicons/lib/IosClose'
 const Modal = ({ hideModal, children }) =>
   <React.Fragment>
     <div className='overlay'></div>
-    <div className='close-wrap' onClick={() => hideModal()}>
-      <IosClose />
-    </div>
     <div className="modal-content">
-      {children}
+      <div className='close-wrap' onClick={() => hideModal()}>
+        <IosClose fontSize="30px" color="#fff" />
+        {children}
+      </div>
     </div>
   </React.Fragment>
 

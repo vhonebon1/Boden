@@ -26,7 +26,7 @@ class Home extends React.Component {
   }
 
   clearSelectedProject = () => {
-    this.setState({selectedProject: false})
+    this.setState({ selectedProject: false })
   }
 
   renderHomePage = () => {
@@ -34,11 +34,13 @@ class Home extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <div className='home-project-images'>
-          { projects && projects.map((project) =>
-            <HomeBlock project={project} onClick={() => this.toggleSelectedProject(project.id)}/>
-          )}
-        </div>
+        { !this.state.selectedProject &&
+          <div className='home-project-images'>
+            { projects && projects.map((project) =>
+              <HomeBlock project={project} onClick={() => this.toggleSelectedProject(project.id)}/>
+            )}
+          </div>
+        }
         { this.state.selectedProject && this.renderSelectedVideo()}
         <Footer />
       </React.Fragment>
