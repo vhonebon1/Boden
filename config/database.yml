@@ -23,4 +23,4 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
-  url: 'postgres://kxlzmfrsfpnsyk:25268d816fa3290da2e236a34c1db4dee3c9006c7657daaba04ae2805937bed7@ec2-75-101-133-29.compute-1.amazonaws.com:5432/d33r2n1nmkaub7' #add url here!
+  url: 'postgres://sfcyjuksivrmgc:09adeb75e9f7f8f2da944d7966e02e569e98270bcba96bf3118a042ffa4293f3@ec2-107-22-160-185.compute-1.amazonaws.com:5432/d5p70e10kql0so' #add url here!

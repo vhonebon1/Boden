@@ -12,3 +12,4 @@ adele_song = Project.create(
   description: "Great song",
   url: "DDWKuo3gXMQ",
 )
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
