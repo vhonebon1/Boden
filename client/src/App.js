@@ -27,9 +27,9 @@ class App extends Component {
   }
 
   getProjects () {
-    this.fetch('https://gentle-earth-22725.herokuapp.com/api/v1/projects')
+    this.fetch('http://localhost:3001/api/v1/projects')
       .then(projects => {
-        if (projects.length) {
+        if (projects && projects.length) {
           this.setState({projects: projects, hasData: true})
         } else {
           this.setState({projects: []})
@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   getProject(id) {
-    this.fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/projects/${id}`)
+    this.fetch(`http://localhost:3001/api/v1/projects/${id}`)
       .then(project => this.setState({project: project}))
   }
 

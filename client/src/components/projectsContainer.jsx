@@ -12,11 +12,12 @@ class ProjectsContainer extends React.Component {
     }
     this.deleteProject = this.deleteProject.bind(this)
     this.addNewProject = this.addNewProject.bind(this)
+    this.editProject = this.editProject.bind(this)
   }
 
-  addNewProject = (title, description, url) => {
-    let body = JSON.stringify({project: {title, description, url}})
-    fetch('https://gentle-earth-22725.herokuapp.com/api/v1/projects', {
+  addNewProject = (title, description, url, large) => {
+    let body = JSON.stringify({project: {title, description, url, large}})
+    fetch('http://localhost:3001/api/v1/projects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -26,7 +27,7 @@ class ProjectsContainer extends React.Component {
   }
 
   deleteProject(id) {
-    fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/projects/${id}`, {
+    fetch(`http://localhost:3001/api/v1/projects/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -34,9 +35,9 @@ class ProjectsContainer extends React.Component {
     }).then((response) => console.log(response))
   }
 
-  editProject(id, title, description, url) {
-    let body = JSON.stringify({project: {id, title, description, url}})
-    fetch(`https://gentle-earth-22725.herokuapp.com/api/v1/projects/${id}`, {
+  editProject(id, title, description, url, large) {
+    let body = JSON.stringify({project: {id, title, description, url, large}})
+    fetch(`http://localhost:3001/api/v1/projects/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -51,6 +52,7 @@ class ProjectsContainer extends React.Component {
 
   render() {
     const { projects, showNewForm } = this.state
+    console.log(projects)
     return(
       <React.Fragment>
         <h1>Admin</h1>

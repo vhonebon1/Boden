@@ -6,7 +6,7 @@ const Modal = ({ hideModal, children }) =>
     <div className='overlay'></div>
     <div className="modal-content">
       <div className='close-wrap' onClick={() => hideModal()}>
-        <IosClose fontSize="30px" color="#fff" />
+        <IosClose fontSize="30px" />
         {children}
       </div>
     </div>

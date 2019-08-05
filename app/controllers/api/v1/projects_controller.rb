@@ -42,7 +42,7 @@ module Api::V1
     end
 
     def project_params
-      params.require(:project).permit(:title, :description, :url)
+      params.require(:project).permit(:title, :description, :url, :large)
     end
   end
 end

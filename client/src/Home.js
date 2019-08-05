@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from './components/header'
-import Footer from './components/footer'
 import HomeBlock from './components/homeBlock'
 import Modal from './components/modal'
 import VideoPlayer from './components/videoPlayer'
@@ -29,21 +28,59 @@ class Home extends React.Component {
     this.setState({ selectedProject: false })
   }
 
+  renderBlock(largeValue) {
+    return (
+      <div className="large-block">
+        <HomeBlock
+          project={this.state.selectedProject}
+          large={true}
+          onClick={() => this.toggleSelectedProject(this.state.selectedProject.id)}
+        />
+    </div>
+    )
+  }
+
+  renderLargeBlock = (project) => {
+    return(
+      <HomeBlock
+        project={project}
+        large={true}
+        onClick={() => this.toggleSelectedProject(project.id)}
+      />
+    )
+  }
+
   renderHomePage = () => {
     const { projects } = this.state
+    const largeBlock = projects.filter((project) => project.large)
+    const smallBlocks = projects.filter((project) => !project.large)
+    const hasLargeBlock = largeBlock.length > 0
+
     return (
-      <React.Fragment>
+      <div className="main">
         <Header />
         { !this.state.selectedProject &&
           <div className='home-project-images'>
-            { projects && projects.map((project) =>
-              <HomeBlock project={project} onClick={() => this.toggleSelectedProject(project.id)}/>
+            { largeBlock && largeBlock.map((project) =>
+              <HomeBlock
+                project={project}
+                large={true}
+                onClick={() => this.toggleSelectedProject(project.id)}
+              />
             )}
+            <div className="small-blocks">
+              { smallBlocks && smallBlocks.map((project) =>
+                <HomeBlock
+                  project={project}
+                  large={false}
+                  onClick={() => this.toggleSelectedProject(project.id)}
+                />
+              )}
+            </div>
           </div>
         }
         { this.state.selectedProject && this.renderSelectedVideo()}
-        <Footer />
-      </React.Fragment>
+      </div>
     )
   }
 

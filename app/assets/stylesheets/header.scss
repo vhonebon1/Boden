@@ -1,0 +1,23 @@
+.header-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex: 0 0 15%;
+  .header {
+    font: normal normal normal 4.4em arial,'ｍｓ ｐゴシック','ms pgothic','돋움',dotum,helvetica,sans-serif;
+    max-width: 675px;
+    margin-bottom: 10px;
+    font-size: 7em;
+  }
+  .subtitle {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 40px;
+    font-size: 1.5rem;
+    margin-top: 30px;
+  }
+}
+.contact {
+  font-size: 2rem;
+}
